@@ -8,9 +8,6 @@ storage:
   data:
     size: 500Mi
     path: /opt/teamcity/datadir
-  config:
-    size: 500Mi
-    path: /opt/teamcity/config
   logs:
     size: 500Mi
     path: /opt/teamcity/logs
