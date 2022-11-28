@@ -11,3 +11,6 @@ storage:
   logs:
     size: 500Mi
     path: /opt/teamcity/logs
+  config:
+    size: 10Mi
+    path: /opt/teamcity/config
