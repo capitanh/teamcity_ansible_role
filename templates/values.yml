@@ -1,5 +1,8 @@
 agentReplicaCount: 1
 
+image:
+  tag: latest
+
 pvc:
   data: teamcity-data-pvc
   logs: teamcity-logs-pvc
