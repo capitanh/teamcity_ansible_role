@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: teamcity-{{item.key}}
+  labels:
+    type: local
+spec:
+  storageClassName: {{storage_class_name}}
+  capacity:
+    storage: {{item.value.size}}
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: {{item.value.path}}

@@ -1,0 +1,11 @@
+agentReplicaCount: 1
+
+pvc:
+  data: teamcity-data-pvc
+  logs: teamcity-logs-pvc
+  config: teamcity-config-pvc
+
+service:
+  int_type: ClusterIP
+  ext_type: NodePort
+  port: {{teamcity_port}}
