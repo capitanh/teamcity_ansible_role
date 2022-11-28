@@ -38,7 +38,7 @@
     chart_repo_url: https://codaglobal.github.io/coda-charts
     release_namespace: "{{teamcity_namespace}}"
     create_namespace: true
-    wait: yes
+    wait: no
     values_files:
       - /tmp/teamcity_values.yml
   become_user: "{{admin_user}}"
