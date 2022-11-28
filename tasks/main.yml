@@ -10,6 +10,12 @@
     mode: 0777
   with_dict: "{{storage}}"
 
+- name: Create config dir
+  file:
+    path: "{{storage.data.path}}/config"
+    state: directory
+    mode: 0777
+
 - name: Create namespace and volumes for data, logs and configs
   kubernetes.core.k8s:
     template:
