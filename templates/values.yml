@@ -1,7 +1,8 @@
+# REf: https://github.com/codaglobal/teamcity_helm/blob/main/values.yaml
 agentReplicaCount: 1
 
 image:
-  tag: latest
+  tag: 2022.10-linux-sudo
 
 pvc:
   data: teamcity-data-pvc
