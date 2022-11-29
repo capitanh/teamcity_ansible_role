@@ -13,3 +13,6 @@ service:
   int_type: ClusterIP
   ext_type: NodePort
   port: {{teamcity_port}}
+
+securityContext:
+  privileged: true
