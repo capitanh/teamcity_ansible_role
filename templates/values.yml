@@ -2,7 +2,7 @@
 agentReplicaCount: 1
 
 image:
-  tag: 2022.10-linux-sudo
+  tag: latest
 
 pvc:
   data: teamcity-data-pvc
