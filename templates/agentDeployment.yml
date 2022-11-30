@@ -25,7 +25,7 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: SERVER_URL
-          value: teamcity:8111
+          value: http://teamcity:8111
         - name: DOCKER_IN_DOCKER
           value: start
         resources: {}
