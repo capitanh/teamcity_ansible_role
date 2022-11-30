@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: teamcity-int
+  namespace: {{teamcity_namespace}}
+  labels:
+    app.kubernetes.io/instance=teamcity
+    app.kubernetes.io/name=teamcity
+spec:
+  type: ClusterIP
+  ports:
+  - port: {{teamcity_port}}
+    protocol: TCP
+    targetPort: app
+    name: app
+  selector:
+    app.kubernetes.io/instance=teamcity
+    app.kubernetes.io/name=teamcity
+  sessionAffinity: None

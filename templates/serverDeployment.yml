@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity
+  namespace: {{teamcity_namespace}}
+  labels:
+    app.kubernetes.io/instance=teamcity
+    app.kubernetes.io/name=teamcity
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: teamcity
+      app.kubernetes.io/name: teamcity
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: teamcity
+        app.kubernetes.io/name: teamcity
+    spec:
+      serviceAccountName: {{service_account}}
+      securityContext:
+        privileged: true
+      containers:
+      - name: teamcity
+        image: jetbrains/teamcity-server:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: app
+          containerPort: 8111
+          protocol: TCP
+        resources: {}
+        volumeMounts:
+        - name: teamcity-data
+          mountPath: /data/teamcity_server/datadir
+        - name: teamcity-logs
+          mountPath: /opt/teamcity/logs
+      volumes:
+      - name: teamcity-data
+        persistentVolumeClaim:
+          claimName: teamcity-data-pvc
+      - name: teamcity-logs
+        persistentVolumeClaim:
+          claimName: teamcity-logs-pvc

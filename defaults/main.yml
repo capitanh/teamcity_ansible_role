@@ -1,15 +1,16 @@
-teamcity_app_name:      teamcity
+service_account:        teamcity
 teamcity_namespace:     teamcity
 teamcity_port:          8111        # Server port
 teamcity_service_port:  30002       # Service port to access from outside
+agent_replicas:         1
 
 # Storage
 storage:
   data:
-    size: 500Mi
+    size: 100Mi
     path: /opt/teamcity/datadir
   logs:
-    size: 500Mi
+    size: 10Mi
     path: /opt/teamcity/logs
   config:
     size: 10Mi

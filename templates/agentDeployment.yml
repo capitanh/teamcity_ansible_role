@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teamcity-agent"
+  namespace: {{teamcity_namespace}}  
+  labels:
+    app: teamcity-agent
+spec:
+  replicas: {{agent_replicas}}
+  selector:
+    matchLabels:
+      app: teamcity-agent
+  template:
+    metadata:
+      labels:
+        app: teamcity-agent
+    spec:
+      serviceAccountName: {{service_account}}
+      securityContext: {}
+      containers:
+      - name: teamcity-agent
+        securityContext:
+            privileged: true
+        image: jetbrains/teamcity-agent:2022.10-linux-sudo
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: SERVER_URL
+          value: teamcity:8111"
+        - name: DOCKER_IN_DOCKER
+          value: start
+        resources: {}
+        volumeMounts:
+        - name: teamcity-config
+          mountPath: /data/teamcity_agent/conf
+      volumes:
+      - name: teamcity-config
+        persistentVolumeClaim:
+          claimName: teamcity-config-pvc
