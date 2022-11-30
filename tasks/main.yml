@@ -16,72 +16,16 @@
     state: directory
     mode: 0777
 
-#- name: Create k8s resources
-#  kubernetes.core.k8s:
-#    template:
-#    - nameSpace.yml
-#    - serviceAccount.yml
-#    - pv.yml
-#    - pvc.yml
-#    - serverDeployment.yml
-#    - agentDeployment.yml
-#    - extService.yml
-#    - intService.yml
-#  with_dict: "{{storage}}"
-#  become_user: "{{admin_user}}"
-
-- name: Create namespace
+- name: Create k8s resources
   kubernetes.core.k8s:
     template:
     - nameSpace.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: Create serviceAccount
-  kubernetes.core.k8s:
-    template:
     - serviceAccount.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: Create pv
-  kubernetes.core.k8s:
-    template:
     - pv.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: Create pvc
-  kubernetes.core.k8s:
-    template:
     - pvc.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: server deployment
-  kubernetes.core.k8s:
-    template:
     - serverDeployment.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: Create agent deployment
-  kubernetes.core.k8s:
-    template:
     - agentDeployment.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: ext service
-  kubernetes.core.k8s:
-    template:
     - extService.yml
-  with_dict: "{{storage}}"
-  become_user: "{{admin_user}}"
-
-- name: Create int service
-  kubernetes.core.k8s:
-    template:
     - intService.yml
   with_dict: "{{storage}}"
   become_user: "{{admin_user}}"
