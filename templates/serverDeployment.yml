@@ -4,8 +4,8 @@ metadata:
   name: teamcity
   namespace: {{teamcity_namespace}}
   labels:
-    app.kubernetes.io/instance=teamcity
-    app.kubernetes.io/name=teamcity
+    app.kubernetes.io/instance: teamcity
+    app.kubernetes.io/name: teamcity
 spec:
   replicas: 1
   selector:
