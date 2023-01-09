@@ -8,6 +8,8 @@
     path: "{{item.value.path}}"
     state: directory
     mode: 0777
+    owner: "{{admin_user}}"
+    group: "{{admin_user}}"
   with_dict: "{{storage}}"
 
 - name: Create agent config dir
@@ -15,6 +17,8 @@
     path: "{{storage.data.path}}/config"
     state: directory
     mode: 0777
+    owner: "{{admin_user}}"
+    group: "{{admin_user}}"
 
 - name: Create k8s resources
   kubernetes.core.k8s:
